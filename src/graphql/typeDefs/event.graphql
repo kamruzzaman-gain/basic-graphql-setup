@@ -1,0 +1,40 @@
+# event.graphql
+
+type Event {
+  id: ID
+  user_id: String
+  title: String
+  description: String
+  start_time: String
+  end_time: String
+  location: String
+  rsvp: [String!]
+  createdAt: String
+  updatedAt: String
+}
+
+input eventCreateInput {
+  title: String!
+  description: String!
+  location: String!
+}
+
+input CategoryUpdateInput {
+  title: String
+  description: String
+  location: String
+}
+
+input EntityIdQueryDataType {
+  id: String!
+}
+
+type Query {
+  getCategories: [Event]
+}
+
+type Mutation {
+  createAnEvent(inputData: eventCreateInput!): Event
+  updateAnEvent(queryData: EntityIdQueryDataType!, inputData: CategoryUpdateInput!): Event
+  deleteAnEvent(queryData: EntityIdQueryDataType!): Event
+}
